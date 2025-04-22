@@ -34,7 +34,7 @@ class _SigninPageState extends State<SigninPage> {
                 Center(child: Image.asset("assets/images/logo.png")),
                 1.hSpace(context),
                 AppText(
-                  "Hii There!!",
+                  "Welcome back!",
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   color: ThemeColors.black,
@@ -68,7 +68,7 @@ class _SigninPageState extends State<SigninPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     AppText(
-                      "Recover Password?",
+                      "Forgot password?",
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: ThemeColors.black,
@@ -82,7 +82,7 @@ class _SigninPageState extends State<SigninPage> {
                   ontap: () {
                     Get.toNamed(RouteName.bnbPage);
                   },
-                  label: "Signin",
+                  label: "Sign in",
                   radius: 8,
                   txtClr: ThemeColors.white,
                   txtSize: 16,

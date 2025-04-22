@@ -274,99 +274,6 @@ class _SoundsPageState extends State<SoundsPage>
                         color: ThemeColors.black,
                       ),
                     ),
-                    // Container(
-                    //   padding: const EdgeInsets.symmetric(
-                    //     horizontal: 12,
-                    //     vertical: 10,
-                    //   ),
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.white.withOpacity(0.25),
-                    //     borderRadius: BorderRadius.circular(16),
-                    //   ),
-                    //   child: Row(
-                    //     children: [
-                    //       Container(
-                    //         width: 60,
-                    //         height: 60,
-                    //         decoration: BoxDecoration(
-                    //           color: Colors.white,
-                    //           borderRadius: BorderRadius.circular(10),
-                    //         ),
-                    //         child: const Icon(
-                    //           Icons.music_note,
-                    //           color: Colors.orange,
-                    //           size: 30,
-                    //         ),
-                    //       ),
-                    //       const SizedBox(width: 12),
-                    //       Expanded(
-                    //         child: Column(
-                    //           crossAxisAlignment: CrossAxisAlignment.start,
-                    //           children: [
-                    //             const Text(
-                    //               'I Don’t Care',
-                    //               style: TextStyle(
-                    //                 fontSize: 16,
-                    //                 fontWeight: FontWeight.bold,
-                    //                 color: Colors.black,
-                    //               ),
-                    //             ),
-                    //             const SizedBox(height: 6),
-                    //             Row(
-                    //               children: [
-                    //                 GestureDetector(
-                    //                   onTap: () {
-                    //                     if (_isPlaying) {
-                    //                       _audioPlayer.pause();
-                    //                     } else {
-                    //                       _audioPlayer.play();
-                    //                     }
-                    //                   },
-                    //                   child: Icon(
-                    //                     _isPlaying
-                    //                         ? Icons.pause_circle
-                    //                         : Icons.play_circle,
-                    //                     color: Colors.orange,
-                    //                     size: 24,
-                    //                   ),
-                    //                 ),
-                    //                 const SizedBox(width: 8),
-                    //                 Expanded(
-                    //                   child: LinearProgressIndicator(
-                    //                     value:
-                    //                         _position.inMilliseconds /
-                    //                         (_duration.inMilliseconds == 0
-                    //                             ? 1
-                    //                             : _duration.inMilliseconds),
-                    //                     backgroundColor: Colors.grey.shade300,
-                    //                     color: Colors.grey.shade600,
-                    //                     minHeight: 4,
-                    //                   ),
-                    //                 ),
-                    //                 const SizedBox(width: 8),
-                    //                 Text(
-                    //                   _formatDuration(_position),
-                    //                   style: const TextStyle(
-                    //                     fontSize: 12,
-                    //                     color: Colors.black,
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //             const SizedBox(height: 4),
-                    //             const Text(
-                    //               'Recording',
-                    //               style: TextStyle(
-                    //                 fontSize: 12,
-                    //                 color: Colors.black45,
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     2.hSpace(context),
                     TabBar(
                       controller: _tabController,
@@ -384,7 +291,7 @@ class _SoundsPageState extends State<SoundsPage>
                       indicatorWeight: 3,
                       tabs: const [
                         Tab(text: "All"),
-                        Tab(text: "Send"),
+                        Tab(text: "Sent"),
                         Tab(text: "Received"),
                       ],
                     ),
@@ -419,13 +326,13 @@ class _SoundsPageState extends State<SoundsPage>
               Icons.music_note,
               color: ThemeColors.primaryColor,
             ),
-            label: 'Local',
+            label: 'My recordings',
             labelStyle: const TextStyle(color: ThemeColors.black),
             onTap: () {},
           ),
           SpeedDialChild(
             child: const Icon(Icons.mic, color: ThemeColors.primaryColor),
-            label: 'Record',
+            label: 'Record a sound',
             labelStyle: const TextStyle(color: ThemeColors.black),
             onTap: _showRecordingDialog,
           ),

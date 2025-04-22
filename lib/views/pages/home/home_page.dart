@@ -325,7 +325,7 @@ class _HomePageState extends State<HomePage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     AppText(
-                                      'wake Up Time',
+                                      'Wake Up Time',
                                       fontSize: 16,
                                       fontFamily: AppFontFamily.roboto,
                                       fontWeight: FontWeight.w400,

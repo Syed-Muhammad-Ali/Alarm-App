@@ -67,7 +67,7 @@ class _OnboadingTwoPageState extends State<OnboadingTwoPage> {
                         ontap: () {
                           Get.toNamed(RouteName.signinPage);
                         },
-                        label: "Signin",
+                        label: "Sign in",
                         radius: 8,
                         txtClr: ThemeColors.white,
                         txtSize: 16,
@@ -82,7 +82,7 @@ class _OnboadingTwoPageState extends State<OnboadingTwoPage> {
                         ontap: () {
                           Get.toNamed(RouteName.signUpPage);
                         },
-                        label: "Signup",
+                        label: "Sign up",
                         radius: 8,
                         txtClr: ThemeColors.white,
                         txtSize: 16,
@@ -92,6 +92,7 @@ class _OnboadingTwoPageState extends State<OnboadingTwoPage> {
                   ],
                 ),
               ),
+              4.hSpace(context),
             ],
           ),
         ),

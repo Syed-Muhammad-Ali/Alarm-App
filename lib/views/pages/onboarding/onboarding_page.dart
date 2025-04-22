@@ -43,14 +43,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   ),
                   child: Image.asset(
                     images[index],
-                    height: 400,
+                    height: 450,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
                 4.hSpace(context),
                 AppText(
-                  "Access Anywhere",
+                  "Wake up with WUB",
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   color: ThemeColors.black,
@@ -59,7 +59,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: AppText(
-                    "The video call feature can be accessed from anywhere if your team is here to help you.",
+                    "Let your friends surprise you with a custom ringtone.",
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: ThemeColors.white,
@@ -114,6 +114,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     backgroundColor: ThemeColors.primaryColor,
                   ),
                 ),
+                4.hSpace(context),
               ],
             ),
           );

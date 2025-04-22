@@ -15,6 +15,7 @@ class RouteName {
   static const String setAlarmPage = '/setAlarmPage';
   static const String selectSoundsPage = '/selectSoundsPage';
   static const String otherUserProfilePage = '/otherUserProfilePage';
+  static const String accountSettingPage = '/accountSettingPage';
   
 
 }

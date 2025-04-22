@@ -5,7 +5,6 @@ import 'package:alarm_app/views/widget/app_text.dart';
 import 'package:alarm_app/views/widget/extension_sizebox.dart';
 import 'package:flutter/material.dart';
 
-
 class StatCard extends StatelessWidget {
   final String title;
   final String value;
@@ -35,7 +34,7 @@ class StatCard extends StatelessWidget {
           AppText(
             value,
             fontFamily: AppFontFamily.inter,
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.w700,
             color: ThemeColors.black.withOpacity(0.90),
           ),

@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, avoid_print
 
 import 'package:alarm_app/res/routes/routes_name.dart';
 import 'package:alarm_app/res/theme/theme_color.dart';
@@ -136,12 +136,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: const [
                     StatCard(title: 'Total alarms', value: '75'),
                     StatCard(title: 'Ringtones Sent/\nReceived', value: '75'),
-                    StatCard(title: 'Wake-up time\naverage', value: '128'),
+                    StatCard(title: 'Wake-up time\naverage', value: '7:42 AM'),
                   ],
                 ),
                 4.hSpace(context),
                 SettingsItem(
-                  title: 'Sounds',
+                  title: 'My sounds',
                   trailing: const Icon(Icons.arrow_forward, size: 22),
                   onTap: () {
                     Get.toNamed(RouteName.showAlarmPage);
@@ -149,7 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 1.hSpace(context),
                 SettingsItem(
-                  title: 'Notification',
+                  title: 'Notifications',
                   trailing: Transform.scale(
                     scale: 0.7,
                     child: Switch(
@@ -166,15 +166,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 1.hSpace(context),
                 SettingsItem(
-                  title: 'Delete Account',
+                  title: 'Account Settings',
                   trailing: const Icon(Icons.arrow_forward, size: 22),
-                  onTap: () {},
-                ),
-                1.hSpace(context),
-                SettingsItem(
-                  title: 'Log Out',
-                  trailing: const Icon(Icons.arrow_forward, size: 22),
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(RouteName.accountSettingPage);
+                  },
                 ),
               ],
             ),

@@ -25,7 +25,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final addressCtrl = TextEditingController();
-  final zipCodeCtrl = TextEditingController();
+  final phoneNoCtrl = TextEditingController();
   String? countryValue;
   String? stateValue;
   String? cityValue;
@@ -145,8 +145,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   4.hSpace(context),
                   AppTextfield(
-                    hint: "Enter Username",
+                    hint: "Username",
                     ctr: nameCtrl,
+                    readOnly: true,
                     textInputType: TextInputType.name,
                     autofillHints: const [AutofillHints.name],
                   ),
@@ -154,6 +155,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   AppTextfield(
                     hint: "Email",
                     ctr: emailCtrl,
+                    readOnly: true,
                     textInputType: TextInputType.emailAddress,
                     autofillHints: const [AutofillHints.email],
                   ),
@@ -167,20 +169,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   1.hSpace(context),
                   AppTextfield(
-                    hint: "Address",
-                    ctr: addressCtrl,
-                    autofillHints: const [AutofillHints.addressCity],
-                    textInputType: TextInputType.streetAddress,
-                    isPasswordField: true,
-                  ),
-                  1.hSpace(context),
-                  AppTextfield(
-                    hint: "Zip Code",
-                    ctr: zipCodeCtrl,
+                    hint: "Phone",
+                    ctr: phoneNoCtrl,
                     autofillHints: const [AutofillHints.telephoneNumber],
                     textInputType: TextInputType.number,
-                    isPasswordField: true,
                   ),
+                  // 1.hSpace(context),
+                  // AppTextfield(
+                  //   hint: "Address",
+                  //   ctr: addressCtrl,
+                  //   autofillHints: const [AutofillHints.addressCity],
+                  //   textInputType: TextInputType.streetAddress,
+                  //   isPasswordField: true,
+                  // ),
+                  // 1.hSpace(context),
+                  // AppTextfield(
+                  //   hint: "Zip Code",
+                  //   ctr: zipCodeCtrl,
+                  //   autofillHints: const [AutofillHints.telephoneNumber],
+                  //   textInputType: TextInputType.number,
+                  //   isPasswordField: true,
+                  // ),
                   1.hSpace(context),
                   CSCPickerPlus(
                     dropdownDecoration: BoxDecoration(
@@ -216,7 +225,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ontap: () {
                       //  Get.toNamed(RouteName.signinPage);
                     },
-                    label: "Update",
+                    label: "Save changes",
                     radius: 8,
                     txtClr: ThemeColors.white,
                     txtSize: 16,

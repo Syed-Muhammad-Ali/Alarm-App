@@ -1,13 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:alarm_app/res/routes/routes_name.dart';
 import 'package:alarm_app/res/theme/theme_color.dart';
 import 'package:alarm_app/views/widget/app_text.dart';
 import 'package:alarm_app/views/widget/app_textfield.dart';
 import 'package:alarm_app/views/widget/extension_sizebox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -136,9 +134,7 @@ class _AllSoundsPageState extends State<AllSoundsPage> {
                         : _positions[index].inMilliseconds /
                             _durations[index].inMilliseconds;
                 return GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: () {},
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 8),
                     padding: const EdgeInsets.all(8),
@@ -248,14 +244,14 @@ class _AllSoundsPageState extends State<AllSoundsPage> {
                                     size: 14,
                                     color: ThemeColors.primaryColor,
                                   ),
-                                  const Spacer(),
-                                  AppText(
-                                    'Local MP3',
-                                    fontFamily: AppFontFamily.lato,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54,
-                                  ),
+                                  // const Spacer(),
+                                  // AppText(
+                                  //   'Local MP3',
+                                  //   fontFamily: AppFontFamily.lato,
+                                  //   fontSize: 10,
+                                  //   fontWeight: FontWeight.w400,
+                                  //   color: Colors.black54,
+                                  // ),
                                 ],
                               ),
                             ],

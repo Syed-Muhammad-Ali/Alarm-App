@@ -23,12 +23,12 @@ class _ViewFriendsPageState extends State<ViewFriendsPage> {
   final List<Map<String, String>> friends = const [
     {
       'name': 'Abinaya Pillai',
-      'subtitle': 'Woke You Up 10 Time s Last Month.',
+      'subtitle': 'Woke You Up 10 time Last Month.',
       'imagePath': 'assets/images/pic3.jpeg',
     },
     {
       'name': 'Abinaya Pillai',
-      'subtitle': 'Woke You Up 10 Time s Last Month.',
+      'subtitle': 'Woke You Up 10 time Last Month.',
       'imagePath': 'assets/images/pic7.jpeg',
     },
   ];
@@ -138,7 +138,7 @@ class _ViewFriendsPageState extends State<ViewFriendsPage> {
                     },
                   ),
                   2.hSpace(context),
-                  const SectionHeader(title: 'Request'),
+                  const SectionHeader(title: 'Friend Requests'),
                   2.hSpace(context),
                   ListView.builder(
                     itemCount: requestList.length,
