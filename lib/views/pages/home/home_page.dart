@@ -94,23 +94,30 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.w700,
                                 color: ThemeColors.white,
                               ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    color: Colors.white,
-                                    size: 22,
-                                  ),
-                                  1.wSpace(context),
-                                  AppText(
-                                    'Kolkata',
-                                    fontFamily: AppFontFamily.oxygen,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    color: ThemeColors.white,
-                                  ),
-                                ],
+                              AppText(
+                                'Total Friends : 14',
+                                fontFamily: AppFontFamily.oxygen,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: ThemeColors.white,
                               ),
+                              // Row(
+                              //   children: [
+                              //     Icon(
+                              //       Icons.location_on,
+                              //       color: Colors.white,
+                              //       size: 22,
+                              //     ),
+                              //     1.wSpace(context),
+                              //     AppText(
+                              //       'Kolkata',
+                              //       fontFamily: AppFontFamily.oxygen,
+                              //       fontSize: 16,
+                              //       fontWeight: FontWeight.w400,
+                              //       color: ThemeColors.white,
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ],
@@ -238,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Container(
-                          height: context.h * 0.2,
+                          height: context.h * 0.21,
                           width: double.infinity,
                           margin: const EdgeInsets.symmetric(vertical: 8),
                           decoration: BoxDecoration(
@@ -264,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                                     const Expanded(
                                       child: AppText(
                                         "I Don’t Care, by Sofi",
-                                        fontSize: 18,
+                                        fontSize: 14,
                                         fontFamily: AppFontFamily.lato,
                                         fontWeight: FontWeight.w500,
                                         color: ThemeColors.white,
@@ -293,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                                   children: const [
                                     AppText(
                                       '5:30 AM',
-                                      fontSize: 24,
+                                      fontSize: 18,
                                       fontFamily: AppFontFamily.roboto,
                                       fontWeight: FontWeight.w500,
                                       color: ThemeColors.white,
@@ -350,7 +357,7 @@ class _HomePageState extends State<HomePage> {
                                                 left: i.toDouble() * 18,
                                               ),
                                               child: CircleAvatar(
-                                                radius: 17,
+                                                radius: 16,
                                                 backgroundImage: AssetImage(
                                                   images[i],
                                                 ),

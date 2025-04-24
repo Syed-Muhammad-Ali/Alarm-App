@@ -208,7 +208,7 @@ class _ViewFriendsPageState extends State<ViewFriendsPage> {
                     },
                   ),
                   2.hSpace(context),
-                  const SectionHeader(title: 'Your Friends'),
+                  const SectionHeader(title: 'Your Friends: (14)'),
                   2.hSpace(context),
                   ListView.builder(
                     itemCount: yourFriendsList.length,

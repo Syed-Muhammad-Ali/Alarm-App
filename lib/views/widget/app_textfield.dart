@@ -169,8 +169,8 @@ class _AppTextfieldState extends State<AppTextfield> {
                 ),
                 suffixIconConstraints: const BoxConstraints(
                   maxWidth: 40,
-                  minWidth: 40,
-                  minHeight: 30,
+                  minWidth: 20,
+                  minHeight: 20,
                 ),
                 suffixIcon:
                     widget.isPasswordField

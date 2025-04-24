@@ -92,12 +92,12 @@ class _AlarmPageState extends State<AlarmPage> {
                         1.hSpace(context),
                         Expanded(
                           child: ListView.builder(
-                            itemCount: 3,
+                            itemCount: 4,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemBuilder: (context, index) {
                               return Container(
-                                height: context.h * 0.2,
+                                height: context.h * 0.21,
                                 width: double.infinity,
                                 margin: const EdgeInsets.symmetric(vertical: 8),
                                 decoration: BoxDecoration(
@@ -124,7 +124,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                           const Expanded(
                                             child: AppText(
                                               "I Don’t Care, by Sofi",
-                                              fontSize: 18,
+                                              fontSize: 14,
                                               fontFamily: AppFontFamily.lato,
                                               fontWeight: FontWeight.w500,
                                               color: ThemeColors.white,
@@ -154,7 +154,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                         children: const [
                                           AppText(
                                             '5:30 AM',
-                                            fontSize: 24,
+                                            fontSize: 18,
                                             fontFamily: AppFontFamily.roboto,
                                             fontWeight: FontWeight.w500,
                                             color: ThemeColors.white,
@@ -189,7 +189,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           AppText(
-                                            'wake Up Time',
+                                            'Wake Up Time',
                                             fontSize: 16,
                                             fontFamily: AppFontFamily.roboto,
                                             fontWeight: FontWeight.w400,
@@ -218,7 +218,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                                       left: i.toDouble() * 18,
                                                     ),
                                                     child: CircleAvatar(
-                                                      radius: 17,
+                                                      radius: 16,
                                                       backgroundImage:
                                                           AssetImage(images[i]),
                                                     ),
