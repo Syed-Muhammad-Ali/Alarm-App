@@ -15,12 +15,18 @@ import 'package:alarm_app/views/pages/onboarding/onboarding_page.dart';
 import 'package:alarm_app/views/pages/profile/edit_profile/edit_profile_page.dart';
 import 'package:alarm_app/views/pages/set_alarm/set_alarm_page.dart';
 import 'package:alarm_app/views/pages/sounds/share_sounds/share_sounds_page.dart';
+import 'package:alarm_app/views/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
   static appRoutes() => [
     // Local Admin Screen Name
     GetPage(
+      name: RouteName.splashPage,
+      page: () => const SplashPage(),
+      // transition: Transition.rightToLeftWithFade,
+      // transitionDuration: const Duration(milliseconds: 800),
+    ), GetPage(
       name: RouteName.onboardingPage,
       page: () => const OnboardingPage(),
       // transition: Transition.rightToLeftWithFade,

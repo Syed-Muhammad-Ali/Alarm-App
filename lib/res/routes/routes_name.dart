@@ -1,6 +1,7 @@
 class RouteName {
   // Local Admin Screen Name
-  static const String onboardingPage = '/';
+  static const String splashPage = '/';
+  static const String onboardingPage = '/onboardingPage';
   static const String onboadingTwoPage = '/onboadingTwoPage';
   static const String signinPage = '/signinPage';
   static const String signUpPage = '/signUpPage';

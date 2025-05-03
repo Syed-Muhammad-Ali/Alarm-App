@@ -24,18 +24,13 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
 
   final List<String> days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
   Set<String> selectedDays = {'Th', 'Sa'};
+  String selectedRepeatOption = 'Once Only';
 
-  // List<int> hours = List.generate(12, (i) => i == 0 ? 12 : i);
-  // List<int> minutes = List.generate(60, (i) => i);
-  // List<String> periods = ['AM', 'PM'];
-  final List<int> hours = List.generate(12, (index) => index + 1);
-  final List<int> minutes = List.generate(60, (index) => index);
-  final List<String> periods = ['AM', 'PM'];
+  final List<int> hours = List.generate(24, (index) => index + 1);
+  final List<int> minutes = List.generate(60, (index) => index + 1);
 
   int selectedHour = 5;
   int selectedMinute = 30;
-  String selectedPeriod = 'AM';
-
   void toggleDay(String day) {
     setState(() {
       selectedDays.contains(day)
@@ -53,39 +48,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
       }
     });
   }
-
-  // Widget _buildWheel(
-  //   List<dynamic> items,
-  //   dynamic selected,
-  //   ValueChanged<dynamic> onChanged,
-  // ) {
-  //   return SizedBox(
-  //     height: 150,
-  //     width: 60,
-  //     child: ListWheelScrollView.useDelegate(
-  //       controller: FixedExtentScrollController(
-  //         initialItem: items.indexOf(selected),
-  //       ),
-  //       itemExtent: 50,
-  //       onSelectedItemChanged: (index) => onChanged(items[index]),
-  //       physics: const FixedExtentScrollPhysics(),
-  //       perspective: 0.003,
-  //       diameterRatio: 1.2,
-  //       childDelegate: ListWheelChildBuilderDelegate(
-  //         builder: (context, index) {
-  //           if (index < 0 || index >= items.length) return null;
-  //           return Center(
-  //             child: Text(
-  //               items[index].toString().padLeft(2, '0'),
-  //               style: const TextStyle(fontSize: 20),
-  //             ),
-  //           );
-  //         },
-  //         childCount: items.length,
-  //       ),
-  //     ),
-  //   );
-  // }
 
   Widget _buildWheel<T>({
     required List<T> items,
@@ -153,36 +115,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
                     textInputType: TextInputType.name,
                   ),
                   3.hSpace(context),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     _buildWheel(
-                  //       hours,
-                  //       selectedHour,
-                  //       (value) => setState(() => selectedHour = value),
-                  //     ),
-                  //     const SizedBox(width: 8),
-                  //     const Text(
-                  //       ":",
-                  //       style: TextStyle(
-                  //         fontSize: 40,
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ),
-                  //     const SizedBox(width: 8),
-                  //     _buildWheel(
-                  //       minutes,
-                  //       selectedMinute,
-                  //       (value) => setState(() => selectedMinute = value),
-                  //     ),
-                  //     const SizedBox(width: 16),
-                  //     _buildWheel(
-                  //       periods,
-                  //       selectedPeriod,
-                  //       (value) => setState(() => selectedPeriod = value),
-                  //     ),
-                  //   ],
-                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -206,57 +138,61 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
                         onChanged:
                             (val) => setState(() => selectedMinute = val),
                       ),
-                      const SizedBox(width: 8),
-                      _buildWheel<String>(
-                        items: periods,
-                        selected: selectedPeriod,
-                        onChanged:
-                            (val) => setState(() => selectedPeriod = val),
+                    ],
+                  ),
+
+                  3.hSpace(context),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppText(
+                        "Repeat",
+                        fontFamily: AppFontFamily.inter,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20),
+                              ),
+                            ),
+                            backgroundColor: Color(0xffe38edf),
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return StatefulBuilder(
+                                builder: (context, setModalState) {
+                                  return _buildRepeatBottomSheet(setModalState);
+                                },
+                              );
+                            },
+                          );
+                        },
+
+                        // onPressed:
+                        //     () => showModalBottomSheet(
+                        //       context: context,
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.vertical(
+                        //           top: Radius.circular(20),
+                        //         ),
+                        //       ),
+                        //       backgroundColor: Color(0xffe38edf),
+                        //       builder: (context) => _buildRepeatBottomSheet(),
+                        //     ),
+                        icon: Icon(
+                          Icons.chevron_right,
+                          size: 32,
+                          color: Colors.black,
+                        ),
                       ),
                     ],
                   ),
-                  3.hSpace(context),
-                  AppText(
-                    "Repeat",
-                    fontFamily: AppFontFamily.inter,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
+
                   2.hSpace(context),
-                  Wrap(
-                    spacing: 6,
-                    runSpacing: 0,
-                    children:
-                        days.map((day) {
-                          final isSelected = selectedDays.contains(day);
-                          return GestureDetector(
-                            onTap: () => toggleDay(day),
-                            onLongPress: toggleAllDays,
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color:
-                                    isSelected
-                                        ? ThemeColors.primaryColor
-                                        : ThemeColors.white.withOpacity(0.75),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: AppText(
-                                day,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: AppFontFamily.roboto,
-                                color:
-                                    isSelected
-                                        ? ThemeColors.white
-                                        : ThemeColors.black,
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                  ),
-                  4.hSpace(context),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,7 +285,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
                     fontWeight: FontWeight.w700,
                     color: ThemeColors.black,
                   ),
-
                   Slider(
                     value: volume,
                     min: 0,
@@ -401,102 +336,147 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
       ),
     );
   }
-}
 
-class TimePickerScreen extends StatefulWidget {
-  const TimePickerScreen({Key? key}) : super(key: key);
+  // Widget _buildRepeatBottomSheet() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(16),
+  //     child: Column(
+  //       mainAxisSize: MainAxisSize.min,
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         AppText("Repeat", fontWeight: FontWeight.w600, fontSize: 18),
+  //         4.hSpace(context),
+  //         ...["Once Only", "Daily", "Weekly", "Weekend"].map(
+  //           (option) => RadioListTile<String>(
+  //             value: option,
+  //             groupValue: selectedRepeatOption,
+  //             onChanged: (value) {
+  //               setState(() => selectedRepeatOption = value!);
+  //             },
+  //             title: AppText(
+  //               option,
+  //               fontWeight: FontWeight.w500,
+  //               color: Colors.white,
+  //             ),
+  //             activeColor: Colors.deepOrange,
+  //             contentPadding: EdgeInsets.zero,
+  //           ),
+  //         ),
+  //         2.hSpace(context),
+  //         AppText("Select Day", fontWeight: FontWeight.w600, fontSize: 16),
+  //         4.hSpace(context),
+  //         Wrap(
+  //           spacing: 6,
+  //           runSpacing: 0,
+  //           children:
+  //               days.map((day) {
+  //                 final isSelected = selectedDays.contains(day);
+  //                 return GestureDetector(
+  //                   onTap: () => toggleDay(day),
+  //                   onLongPress: toggleAllDays,
+  //                   child: Container(
+  //                     width: 40,
+  //                     height: 40,
+  //                     alignment: Alignment.center,
+  //                     decoration: BoxDecoration(
+  //                       color:
+  //                           isSelected
+  //                               ? ThemeColors.primaryColor
+  //                               : ThemeColors.white.withOpacity(0.75),
+  //                       borderRadius: BorderRadius.circular(6),
+  //                     ),
+  //                     child: AppText(
+  //                       day,
+  //                       fontWeight: FontWeight.w400,
+  //                       fontFamily: AppFontFamily.roboto,
+  //                       color:
+  //                           isSelected ? ThemeColors.white : ThemeColors.black,
+  //                     ),
+  //                   ),
+  //                 );
+  //               }).toList(),
+  //         ),
+  //         4.hSpace(context),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  @override
-  State<TimePickerScreen> createState() => _TimePickerScreenState();
-}
-
-class _TimePickerScreenState extends State<TimePickerScreen> {
-  final List<int> hours = List.generate(12, (index) => index + 1);
-  final List<int> minutes = List.generate(60, (index) => index);
-  final List<String> periods = ['AM', 'PM'];
-
-  int selectedHour = 5;
-  int selectedMinute = 30;
-  String selectedPeriod = 'AM';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFFE7A977), Color(0xFFCE5DD4)],
+  Widget _buildRepeatBottomSheet(void Function(void Function()) setModalState) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText("Repeat", fontWeight: FontWeight.w600, fontSize: 18),
+          4.hSpace(context),
+          ...["Once Only", "Daily", "Weekly", "Weekend"].map(
+            (option) => RadioListTile<String>(
+              value: option,
+              groupValue: selectedRepeatOption,
+              onChanged: (value) {
+                setModalState(() => selectedRepeatOption = value!);
+              },
+              title: AppText(
+                option,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+              activeColor: Colors.deepOrange,
+              contentPadding: EdgeInsets.zero,
+            ),
           ),
-        ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildWheel<int>(
-                items: hours,
-                selected: selectedHour,
-                onChanged: (val) => setState(() => selectedHour = val),
-              ),
-              const SizedBox(width: 4),
-              const Text(
-                ":",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(width: 4),
-              _buildWheel<int>(
-                items: minutes,
-                selected: selectedMinute,
-                onChanged: (val) => setState(() => selectedMinute = val),
-              ),
-              const SizedBox(width: 8),
-              _buildWheel<String>(
-                items: periods,
-                selected: selectedPeriod,
-                onChanged: (val) => setState(() => selectedPeriod = val),
-              ),
-            ],
+          2.hSpace(context),
+          AppText("Select Day", fontWeight: FontWeight.w600, fontSize: 16),
+          4.hSpace(context),
+          Wrap(
+            spacing: 6,
+            runSpacing: 0,
+            children:
+                days.map((day) {
+                  final isSelected = selectedDays.contains(day);
+                  return GestureDetector(
+                    onTap: () {
+                      setModalState(() {
+                        selectedDays.contains(day)
+                            ? selectedDays.remove(day)
+                            : selectedDays.add(day);
+                      });
+                    },
+                    onLongPress: () {
+                      setModalState(() {
+                        if (selectedDays.length == days.length) {
+                          selectedDays.clear();
+                        } else {
+                          selectedDays = days.toSet();
+                        }
+                      });
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color:
+                            isSelected
+                                ? ThemeColors.primaryColor
+                                : ThemeColors.white.withOpacity(0.75),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: AppText(
+                        day,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: AppFontFamily.roboto,
+                        color:
+                            isSelected ? ThemeColors.white : ThemeColors.black,
+                      ),
+                    ),
+                  );
+                }).toList(),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildWheel<T>({
-    required List<T> items,
-    required T selected,
-    required ValueChanged<T> onChanged,
-  }) {
-    return SizedBox(
-      height: 200,
-      width: 70,
-      child: ListWheelScrollView.useDelegate(
-        controller: FixedExtentScrollController(
-          initialItem: items.indexOf(selected),
-        ),
-        itemExtent: 50,
-        physics: const FixedExtentScrollPhysics(),
-        perspective: 0.003,
-        diameterRatio: 1.2,
-        onSelectedItemChanged: (index) => onChanged(items[index]),
-        childDelegate: ListWheelChildBuilderDelegate(
-          builder: (context, index) {
-            if (index < 0 || index >= items.length) return null;
-            final isSelected = items[index] == selected;
-            return Center(
-              child: Text(
-                items[index].toString().padLeft(2, '0'),
-                style: TextStyle(
-                  fontSize: isSelected ? 40 : 20,
-                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  color: isSelected ? Colors.black : Colors.black54,
-                ),
-              ),
-            );
-          },
-          childCount: items.length,
-        ),
+          4.hSpace(context),
+        ],
       ),
     );
   }
